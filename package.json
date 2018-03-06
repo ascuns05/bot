@@ -1,0 +1,20 @@
+{
+  "name": "bot",
+  "version": "1.0.0",
+  "description": "telegram bot",
+  "main": "index.js",
+  "scripts": {
+    "start": "node main.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ascuns05/bot.git"
+  },
+  "author": "freethinkel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ascuns05/bot/issues"
+  },
+  "homepage": "https://github.com/ascuns05/bot#readme"
+}
