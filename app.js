@@ -7,10 +7,12 @@ var bodyParser = require('body-parser');
 var stylus = require('stylus');
 
 var index = require('./routes/index');
-var users = require('./routes/users');
+var dashboard = require('./routes/dashboard');
 
+var bot = require('./model/bot_model');
 var app = express();
 
+// bot
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
@@ -25,7 +27,7 @@ app.use(stylus.middleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
-app.use('/users', users);
+app.use('/dashboard', dashboard);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
