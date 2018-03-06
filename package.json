@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/ascuns05/bot/issues"
   },
-  "homepage": "https://github.com/ascuns05/bot#readme"
+  "homepage": "https://github.com/ascuns05/bot#readme",
+  "devDependencies": {
+    "express": "^4.16.2"
+  }
 }
