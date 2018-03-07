@@ -1,13 +1,16 @@
 extends layout
 
 block content
-  .container  
-    h1 Dashboard
-  .container
-    .col.l5
-      - for (let i = data.length-1; i >= 0; i--)
-        .card
-          .data-id= data[i].id
-          span.username= data[i].username
-          span.fullname= data[i].name
-          span.lang= data[i].lang
+  .content
+    .container  
+      h1 Dashboard
+    .container
+      .row
+        .col.l5
+          - for (let i = data.length-1; i >= 0; i--)
+            .card
+              .data-id= data[i].id
+              .name-wrapper
+                span.username= data[i].username
+                span.fullname= data[i].name
+              span.lang= data[i].lang

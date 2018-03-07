@@ -16,12 +16,18 @@
 body {
   margin: 0;
   font-family: "Google";
-  background-color: rgba(38,50,56,0.05);
+  background-color: rgba(38,50,56,0.02);
+}
+.content {
+  margin-top: 40px;
+}
+.navbar {
+  border-bottom: 1px solid rgba(38,50,56,0.1);
 }
 .navbar .menu-wrapper {
   justify-content: space-between;
   align-items: center;
-  height: 90px;
+  height: 70px;
 }
 .navbar .menu-wrapper .logo a {
   font-size: 20px;
@@ -36,13 +42,16 @@ body {
   text-decoration: none;
 }
 .card {
-  border: 1px solid #263238;
+  border: 1px solid rgba(38,50,56,0.2);
+  background-color: #fff;
+  box-shadow: 0 1px 4px 0 rgba(38,50,56,0.1);
   padding: 10px 20px;
   border-radius: 5px;
   color: #263238;
   position: relative;
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 .card .data-id {
   position: absolute;
@@ -82,14 +91,17 @@ body {
   padding: 10px 20px;
   border-radius: 5px;
   transition: 0.3s ease;
+  background-color: #fff;
 }
 .btn:hover {
-  box-shadow: 0 0 0 3px rgba(38,50,56,0.4);
+  box-shadow: 0 0 0 3px rgba(38,50,56,0.3);
 }
 .container {
   max-width: 1440px;
   width: 1100px;
   margin: 0 auto;
+}
+.row {
   display: flex;
 }
 .l5 {

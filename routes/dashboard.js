@@ -6,12 +6,9 @@ let express = require('express')
 router.get('/', function(req, res, next) {
   let userCollection = require('../model/crud').allRead();
   userCollection.then(data => {
-    console.log(data);
-    
     res.render('dashboard', { data });
   } );
 
 });
-
 
 module.exports = router;
