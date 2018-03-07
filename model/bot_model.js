@@ -10,7 +10,7 @@ bot.onText(/\/start/, msg => {
   bot.sendMessage(msg.chat.id, shedule[date.getWeek()%2][date.getDay()].join('\n'), {
     reply_markup: {
       keyboard: [
-        ['Test']
+        ['Получить расписание']
       ]
     }
   } );
