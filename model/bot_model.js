@@ -6,10 +6,14 @@ let TelegramBot = require('node-telegram-bot-api')
 var bot = new TelegramBot(token, {polling: true});
 
 bot.onText(/\/start/, msg => {
-  console.log(msg.from);
   let date = new Date();
-  console.log(date.getWeek());
-  bot.sendMessage(msg.chat.id, shedule[date.getWeek()%2][date.getDay()].join('\n') );
+  bot.sendMessage(msg.chat.id, shedule[date.getWeek()%2][date.getDay()].join('\n'), {
+    reply_markup: {
+      keyboard: [
+        ['Test']
+      ]
+    }
+  } );
   saveUser(msg.from);
 });
 

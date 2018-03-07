@@ -14,7 +14,6 @@ module.exports = (function () {
 
   Crud.prototype.create = async function(model, obj) {
     this.read(obj.id).then(res => {
-      console.log(res);
       if (!res.length) {
         let newUser = new models[model](obj);
         return newUser.save().
