@@ -5,7 +5,7 @@ block content
     h1 Dashboard
   .container
     .col.l5
-      - for (let i = data.length-1; i > 0; i--)
+      - for (let i = data.length-1; i >= 0; i--)
         .card
           .data-id= data[i].id
           span.username= data[i].username
