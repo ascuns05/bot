@@ -6,7 +6,6 @@ module.exports = (function () {
     ;
 
   let models = {}
-  , newObj
   ;
   models.users = require('./models/userModels')(mongoose);
 
@@ -14,12 +13,14 @@ module.exports = (function () {
   function Crud() {}
 
   Crud.prototype.create = async function(model, obj) {
-    if (!this.read(obj.id)) {
-      newObj = new models[model](obj);
-      return await newObj.save().
-      then(() => console.log('add new user'));
-    }
-    
+    this.read(obj.id).then(res => {
+      console.log(res);
+      if (!res.length) {
+        let newUser = new models[model](obj);
+        return newUser.save().
+        then(() => console.log('add new user'));
+      }
+    });
   }
   Crud.prototype.read = async function(userId) {
     return await models.users.find({id: userId})
