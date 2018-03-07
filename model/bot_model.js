@@ -5,12 +5,12 @@ let TelegramBot = require('node-telegram-bot-api')
 
 
 var bot = new TelegramBot(token, {polling: true});
-let data = [];
+let data = {};
 
 bot.onText(/\/start/, msg => {
   console.log(msg);
-  data.push( msg.from);
-  let text = shedule[1].join('\n');
+  data[msg.from.id] = msg.from;
+  let text = shedule.odd[0].join('\n');
   bot.sendMessage(msg.chat.id, text );
 });
 
@@ -18,7 +18,7 @@ setInterval(sendShelude, 5*60000);
 
 function sendShelude() {
   let date = new Date();
-  
+
 }
 
 module.exports = data;

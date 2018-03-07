@@ -1,8 +1,13 @@
 extends layout
 
 block content
-  h1 asd
-  - for (var i = 0; i < data.length; i++)
-      p= data[i].username
-      span= data[i].first_name
-      span= data[i].last_name
+  .container  
+    h1 Dashboard
+  .container
+    .col.l5
+      - for (key in data)
+        .card
+          .data-id= key
+          span.username #{data[key].username}
+          span.fullname #{data[key].first_name}  #{data[key].last_name}
+          span.lang #{data[key].language_code}
