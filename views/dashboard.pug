@@ -10,4 +10,4 @@ block content
           .data-id= key
           span.username #{data[key].username}
           span.fullname #{data[key].first_name}  #{data[key].last_name}
-          span.lang #{data[key].language_code ? 'no' : data[key].language_code}
+          span.lang #{data[key].language_code === "" ? 'no' : data[key].language_code}
