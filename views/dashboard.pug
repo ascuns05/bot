@@ -1,4 +1,8 @@
 extends layout
 
 block content
-  h1= title 
+  h1 asd
+  - for (var i = 0; i < data.length; i++)
+      p= data[i].username
+      span= data[i].first_name
+      span= data[i].last_name
