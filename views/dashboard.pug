@@ -5,9 +5,9 @@ block content
     h1 Dashboard
   .container
     .col.l5
-      - for (key in data)
+      - for (let i = data.length-1; i > 0; i--)
         .card
-          .data-id= key
-          span.username #{data[key].username}
-          span.fullname #{data[key].first_name}  #{data[key].last_name}
-          span.lang #{data[key].language_code === "" ? 'no' : data[key].language_code}
+          .data-id= data[i].id
+          span.username= data[i].username
+          span.fullname= data[i].name
+          span.lang= data[i].lang

@@ -1,16 +1,21 @@
-var express = require('express');
-var router = express.Router();
-let botData = require('../model/bot_model');
+let express = require('express')
+, router = express.Router()
+, botData = require('../model/bot_model')
+, userCollection = require('../model/crud').allRead()
+;
 
-let data = {
-  title: 'ads',
-  data: botData
-};
+userCollection.then( (data) => { 
+  router.get('/', function(req, res, next) {
+    res.render('dashboard', { data });
+    console.log(data[0].id)
+  });
+});
+
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.render('dashboard', data);
-  console.log(data.data)
-});
+// router.get('/', function(req, res, next) {
+//   res.render('dashboard', data);
+//   console.log(data.length)
+// });
 
 module.exports = router;

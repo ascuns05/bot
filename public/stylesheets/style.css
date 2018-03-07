@@ -16,6 +16,7 @@
 body {
   margin: 0;
   font-family: "Google";
+  background-color: rgba(38,50,56,0.05);
 }
 .navbar .menu-wrapper {
   justify-content: space-between;
@@ -40,6 +41,8 @@ body {
   border-radius: 5px;
   color: #263238;
   position: relative;
+  display: flex;
+  align-items: center;
 }
 .card .data-id {
   position: absolute;
@@ -58,8 +61,8 @@ body {
 .card .lang {
   background-color: #263238;
   height: 34px;
-  width: 34px;
-  border-radius: 50%;
+  padding: 0 20px;
+  border-radius: 100px;
   color: #fff;
   display: inline-block;
   line-height: 34px;
@@ -71,7 +74,7 @@ body {
   margin-right: 10px;
 }
 .card+.card {
-  margin-top: 10px;
+  margin-top: 16px;
 }
 .btn {
   cursor: pointer;
