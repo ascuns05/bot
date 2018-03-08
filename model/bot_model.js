@@ -5,12 +5,16 @@ let TelegramBot = require('node-telegram-bot-api')
 ;
 var bot = new TelegramBot(token, {polling: true});
 
+let KB = {
+  getShedule: 'Получить расписание'
+}
+
 bot.onText(/\/start/, msg => {
   let date = new Date();
   bot.sendMessage(msg.chat.id, shedule[date.getWeek()%2][date.getDay()].join('\n'), {
     reply_markup: {
       keyboard: [
-        ['Получить расписание']
+        [KB.getShedule]
       ]
     }
   } );
@@ -24,10 +28,15 @@ function sendShelude() {
   let date = new Date();  
   let text = shedule[date.getWeek()%2][date.getDay()].join('\n');
   if (date.getHours() === 8 && !isSend) {
-    for (key in data) {
-      bot.sendMessage(key, text);
-    }
-    isSend = !isSend;
+    
+    db.allRead().then(data => {
+      for (var i = 0; i < data.length; i++) {
+        bot.sendMessage(data[i].id, text);
+      }
+      isSend = !isSend;
+    });
+    
+    
   }
 }
 
