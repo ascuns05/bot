@@ -1,0 +1,56 @@
+@import '_vars'
+
+.login-form
+  margin-top 70px
+  margin-left auto 
+  margin-right auto
+  width 600px
+  .error
+    color tomato
+  form
+    border 1px dashed rgba($primary, 0.3)
+    margin-top 20px
+    padding 20px
+    border-radius $radius
+    display block
+    .input-field
+      input 
+        width 100%
+        border none
+        height 50px
+        padding 0 20px
+        box-sizing border-box
+        outline none
+        background-color rgba($primary, .5)
+        font-size 12px
+        color #fff
+        margin-bottom 10px
+        border-radius $radius
+        &::placeholder
+          color #fff
+          font-size 12px
+      button 
+        width 100% 
+        border 1px solid $primary
+        background none
+        height 50px
+        border-radius $radius
+        color $primary
+        font-size 14px
+        font-weight 900
+        text-transform uppercase
+        outline none
+        background rgba(#fff, .5)
+
+.bg
+  background-image url('https://images.unsplash.com/photo-1482920387559-08269818bcfc?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=ac8300bbb128cb74a46788b7baa20890&auto=format&fit=crop&w=1050&q=80')
+  background-repeat no-repeat
+  background-size cover
+  background-position center
+  position fixed 
+  z-index -1
+  opacity .3
+  top 0
+  bottom 0
+  right 0
+  left 0

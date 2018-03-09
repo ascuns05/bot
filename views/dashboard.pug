@@ -7,6 +7,7 @@ block content
     .container
       .row
         .col.l5
+          .card-description Connected users
           - for (let i = data.length-1; i >= 0; i--)
             .card
               .data-id= data[i].id
@@ -14,3 +15,31 @@ block content
                 span.username= data[i].username
                 span.fullname= data[i].name
               span.lang= data[i].lang
+        .col.l7
+          .card-description Bot settings
+          .controls-wrapper
+            - for (var i = controls.length-1; i >=0; i-- )
+              .control.card
+                .left 
+                  span= controls[i].type
+                .right 
+                  textarea= controls[i].value
+            button.btn.save-btn Save
+    .sheludes
+      .container
+        h4 Четная неделя
+        .row
+          - for (var i = 1; i < sheludes[0].length; i++)
+            - if (sheludes[0].length-1 !== i)
+              .col.l4
+                .card
+                  - for(j = 0; j < sheludes[0][i].length; j++)
+                    span= sheludes[0][i][j]
+        h4 Нечетная неделя
+        .row
+          - for (var i = 1; i < sheludes[1].length; i++)
+            .col.l4
+              .card
+                - for(j = 0; j < sheludes[1][i].length; j++)
+                  span= sheludes[1][i][j]
+  script(src="/javascripts/dashboard.js")

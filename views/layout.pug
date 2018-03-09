@@ -3,6 +3,7 @@ html
   head
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
+    script(src="/javascripts/main.js")
   body
     .navbar
       .container
@@ -13,5 +14,7 @@ html
             ul
               li 
                 a(href="/dashboard").btn Dashboard 
+              li 
+                a.exit.btn Exit
     block content
     

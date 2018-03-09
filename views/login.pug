@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  .container
+    .row
+      .login-form
+        h2 Auth
+        span.error= error.message
+        form(action="/dashboard" method="POST")
+          .input-field
+            input(type="text" id="name" name="name" placeholder="Login" autocomplete="off")
+          .input-field
+            input(type="password" id="pass" name="pass" placeholder="Password" autocomplete="off")
+          .input-field
+            button.btn Войти
+  .bg

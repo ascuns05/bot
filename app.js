@@ -8,11 +8,11 @@ var stylus = require('stylus');
 
 var index = require('./routes/index');
 var dashboard = require('./routes/dashboard');
+var update = require('./routes/update');
 
 var bot = require('./model/bot_model');
 var app = express();
 
-// bot
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
@@ -28,6 +28,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/dashboard', dashboard);
+app.use('/update', update);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

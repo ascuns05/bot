@@ -1,44 +1,52 @@
 let TelegramBot = require('node-telegram-bot-api')
-, token = '384921691:AAEPgUNJGCazCM0YcftGwIVHokl1c7jpygE'
+// , token = '384921691:AAEPgUNJGCazCM0YcftGwIVHokl1c7jpygE'
 , shedule = require('./shedule')
 , db = require('./crud')
 ;
-var bot = new TelegramBot(token, {polling: true});
 
-let KB = {
-  getShedule: 'Получить расписание'
-}
+Promise.all([db.readOption('botToken'), db.readOption('sheduleTime')]).then( (src) => {
+  var token = src[0][0].value;
+  var time = src[1][0].value
+  var bot = new TelegramBot(token, {polling: true});
 
-bot.onText(/\/start/, msg => {
-  let date = new Date();
-  bot.sendMessage(msg.chat.id, shedule[date.getWeek()%2][date.getDay()].join('\n'), {
-    reply_markup: {
-      keyboard: [
-        [KB.getShedule]
-      ]
+  let KB = {
+    getShedule: 'Получить расписание'
+  }
+  
+  bot.onText(/\/start/, msg => {
+    let date = new Date();
+    console.log(shedule[date.getWeek()%2][date.getDay()]);
+
+    bot.sendMessage(msg.chat.id, shedule[date.getWeek()%2][date.getDay()].join('\n'), {
+      reply_markup: {
+        keyboard: [
+          [KB.getShedule]
+        ]
+      }
+    } );
+    saveUser(msg.from);
+  });
+  
+  let isSend = false;
+  setInterval(sendShelude, 1000);
+  
+  function sendShelude() {
+    let date = new Date();  
+    let text = shedule[date.getWeek()%2][date.getDay()].join('\n');
+    if (date.getHours() === time-3 && !isSend && date.getDay() !== 0) {
+  
+      db.allUserRead().then(data => {
+        for (var i = 0; i < data.length; i++) {
+          bot.sendMessage(data[i].id, text);
+        }
+        isSend = !isSend;
+      });
+  
     }
-  } );
-  saveUser(msg.from);
+  }
+  
 });
 
-let isSend = false;
-setInterval(sendShelude, 1000);
-
-function sendShelude() {
-  let date = new Date();  
-  let text = shedule[date.getWeek()%2][date.getDay()].join('\n');
-  if (date.getHours() === 8 && !isSend) {
-    
-    db.allRead().then(data => {
-      for (var i = 0; i < data.length; i++) {
-        bot.sendMessage(data[i].id, text);
-      }
-      isSend = !isSend;
-    });
-    
-    
-  }
-}
 
 function saveUser(obj) {
   newUser = {
@@ -47,7 +55,7 @@ function saveUser(obj) {
     username: obj.username,
     lang: obj.language_code
   }
-  db.create('users', newUser);
+  db.createUser(newUser);
 }
 // getWeek
 Date.prototype.getWeek = function () {
