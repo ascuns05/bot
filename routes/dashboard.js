@@ -11,7 +11,7 @@ router.post('/', (req, res) => {
     let userCollection = require('../model/crud').allUserRead();
     let controlsCollection = require('../model/crud').allControlsRead();
     Promise.all([userCollection, controlsCollection]).then(function(src) {
-      res.render('dashboard', { data: src[0], controls: src[1] });
+      res.render('dashboard', { data: src[0], controls: src[1], sheludes });
     });
     } else {
       error.message = 'Не верно введен логин или пароль';
